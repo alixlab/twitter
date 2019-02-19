@@ -1,14 +1,14 @@
 document.getElementById("btnTwitter").addEventListener("click", addTweet);
 
-let twitterText = document.getElementById("twitterText").value;
-let tweetList = document.getElementById("tweets").value;
+let twitterText = document.querySelector("#twitterText");
+let tweetList = document.querySelector("#tweets");
 
 function addTweet() {
-    let newListTweets = document.createElement('li');
-    newListTweets.textContext = twitterText.value;
-    tweetList.appendChild(newListTweets);
-    twitterText.value = '';
+    let newList = document.createElement('li');
 
+    newList.textContent = twitterText.value;
+    tweetList.appendChild(newList);   
+    twitterText.value = '';
 }
 
 
