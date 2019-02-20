@@ -1,3 +1,7 @@
 ul {
     list-style-type: none;
 }
+
+#twitterText {
+    resize: none;
+}

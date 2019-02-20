@@ -31,11 +31,21 @@ function counterChar(event) {
     
     if (twitterText.value.length > 140) {
         document.getElementById("btnTwitter").disabled = true;
-    } else if (countNum <= 20 && countNum > 10) {
+    } else if (countNum > 10 && countNum <= 20) {
         counter.style.color = "orange";
-    } else if (countNum <= 10 && countNum >= 0) {
+    } else if (countNum >= 0 && countNum <= 10) {
         counter.style.color = "red";
     } else {
         counter.style.color = "black";
+    }
+}
+
+window.addEventListener("keyup", sizeTextArea);
+
+function sizeTextArea(event) {
+    if (twitterText.scrollHeight > twitterText.offsetHeight) {
+        twitterText.rows += 1;
+    } else {
+        twitterText.rows -= 1;
     }
 }
