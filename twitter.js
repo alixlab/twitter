@@ -2,9 +2,11 @@ let twitterText = document.querySelector("#twitterText");
 let tweetList = document.querySelector("#tweets");
 const maxChar = 140;
 
-document.getElementById("btnTwitter").addEventListener("click", addTweet);
 document.getElementById("twitterText").addEventListener("input", enableBtn);
-    
+document.getElementById("btnTwitter").addEventListener("click", addTweet);
+window.addEventListener("keyup", counterChar);
+twitterText.addEventListener("keydown", sizeTextArea);
+
 function enableBtn(event) {
     if (twitterText.value === "") {
         document.getElementById("btnTwitter").disabled = true;
@@ -14,15 +16,15 @@ function enableBtn(event) {
 }
 
 function addTweet(event) {
-    let newList = document.createElement('li');
+    let newTweet = document.createElement('p');
 
-    newList.textContent = twitterText.value;
-    tweetList.appendChild(newList);   
+    newTweet.textContent = twitterText.value + " " + moment().format('LT');
+    tweetList.prepend(newTweet);   
     twitterText.value = "";
     document.getElementById("btnTwitter").disabled = true;
+    document.getElementById("counter").innerHTML = maxChar;
+    document.getElementById("counter").style.color = "black";
 }
-
-window.addEventListener("keyup", counterChar)
 
 function counterChar(event) {
     let counter = document.getElementById("counter");
@@ -31,21 +33,16 @@ function counterChar(event) {
     
     if (twitterText.value.length > 140) {
         document.getElementById("btnTwitter").disabled = true;
-    } else if (countNum > 10 && countNum <= 20) {
-        counter.style.color = "orange";
-    } else if (countNum >= 0 && countNum <= 10) {
+    } else if (countNum < 10) {
         counter.style.color = "red";
+    } else if (countNum < 20) {
+        counter.style.color = "orange";
     } else {
         counter.style.color = "black";
     }
 }
 
-window.addEventListener("keyup", sizeTextArea);
-
 function sizeTextArea(event) {
-    if (twitterText.scrollHeight > twitterText.offsetHeight) {
-        twitterText.rows += 1;
-    } else {
-        twitterText.rows -= 1;
-    }
+    twitterText.style.cssText = "height:auto; padding:0";
+    twitterText.style.cssText = "height:" + twitterText.scrollHeight + "px";
 }
