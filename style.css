@@ -90,4 +90,14 @@ ul {
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
+    margin: 10px;
+    background-color: white;
+}
+
+#tweets p {
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: white;
 }

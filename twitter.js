@@ -1,5 +1,5 @@
 let twitterText = document.querySelector("#twitterText");
-let tweetList = document.querySelector("#tweets");
+let tweets = document.querySelector("#tweets");
 const maxChar = 140;
 
 document.getElementById("twitterText").addEventListener("input", enableBtn);
@@ -18,8 +18,8 @@ function enableBtn(event) {
 function addTweet(event) {
     let newTweet = document.createElement('p');
 
-    newTweet.textContent = twitterText.value + " " + moment().format('LT');
-    tweetList.prepend(newTweet);   
+    newTweet.textContent = twitterText.value + " - " + moment().format('LLL');
+    tweets.prepend(newTweet);   
     twitterText.value = "";
     document.getElementById("btnTwitter").disabled = true;
     document.getElementById("counter").innerHTML = maxChar;
