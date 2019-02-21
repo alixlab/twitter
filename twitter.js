@@ -11,7 +11,7 @@ function enableBtn(event) {
     if (twitterText.value === "") {
         document.getElementById("btnTwitter").disabled = true;
     } else {
-        document.getElementById("btnTwitter").disabled = false;    
+        document.getElementById("btnTwitter").disabled = false;
     }
 }
 
@@ -19,7 +19,7 @@ function addTweet(event) {
     let newTweet = document.createElement('p');
 
     newTweet.textContent = twitterText.value + " - " + moment().format('LLL');
-    tweets.prepend(newTweet);   
+    tweets.prepend(newTweet);
     twitterText.value = "";
     document.getElementById("btnTwitter").disabled = true;
     document.getElementById("counter").innerHTML = maxChar;
@@ -30,7 +30,7 @@ function counterChar(event) {
     let counter = document.getElementById("counter");
     let countNum = maxChar - twitterText.value.length;
     document.getElementById("counter").innerHTML = countNum;
-    
+
     if (twitterText.value.length > 140) {
         document.getElementById("btnTwitter").disabled = true;
     } else if (countNum < 10) {
